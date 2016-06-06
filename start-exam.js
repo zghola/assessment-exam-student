@@ -13,6 +13,12 @@ const apiClient = new APIClient();
 apiClient.startExam(studentId, examId, (err, res, body) => {
   const exam = body;
   for (let question of exam.questions) {
-    console.log('question', question);
+    if (!question) {
+      continue;
+    }
+    
+    // write exam files to local disk
+    fs.writeFileSync(question.testPath, question.testCode);
+    fs.writeFileSync(question.codePath, question.code);
   }
 });

@@ -1,7 +1,7 @@
 const fs          = require("fs");
 
-const SubmissionClient  = require("./submission-client");
-const TestRunner        = require("./test-runner");
+const APIClient   = require("./api-client");
+const TestRunner  = require("./test-runner");
 
 const studentId = fs.readFileSync("./.student-id", "utf8");
 if (!studentId) {
@@ -16,12 +16,12 @@ if (!testNumber) {
 }
 
 const testRunner = new TestRunner(studentId);
-const submissionClient = new SubmissionClient();
+const apiClient = new APIClient();
 
 testRunner.run(testNumber, (err, results) => {
   results.studentId = studentId.trim();
   
-  submissionClient.submit(results, (err, response, body) => {
+  apiClient.submit(results, (err, response, body) => {
     if (err) {
       console.error(err);
     }
