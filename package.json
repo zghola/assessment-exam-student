@@ -7,10 +7,11 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "node start-exam.js",
     "test": "node index.js"
   },
   "author": "Philip Jama",
-  "license": "LHL",
+  "license": "Proprietary",
   "dependencies": {
     "chai": "^3.5.0",
     "eslint": "^2.11.1",
