@@ -1,44 +1,30 @@
 const fs          = require("fs");
 
 const APIClient   = require("./api-client");
+const Messages    = require("./messages");
 const TestRunner  = require("./test-runner");
 
 const studentId = fs.readFileSync("./.student-id", "utf8");
 if (!studentId) {
-  printStudentIdWarning();
+  console.log(Messages.StudentIdWarning);
   process.exit(1);
 }
 
-const testNumber = process.argv[2];
-if (!testNumber) {
-  printUsageInstructions();
+const questionNumber = process.argv[2];
+if (!questionNumber) {
+  console.log(Messages.UsageInstructions);
   process.exit(1);
 }
 
-const testRunner = new TestRunner(studentId);
+const testRunner = new TestRunner();
 const apiClient = new APIClient();
 
-testRunner.run(testNumber, (err, results) => {
+testRunner.run(questionNumber, (err, results) => {
   results.studentId = studentId.trim();
-  
   apiClient.submit(results, (err, response, body) => {
     if (err) {
       console.error(err);
     }
-    printGradeResults(body);
+    console.log(body);
   });
 });
-
-function printGradeResults(gradeObj) {
-  console.log(gradeObj);
-}
-
-function printUsageInstructions() {
-  console.log("Usage:");
-  console.log("    npm run test {Test#}");
-  console.log("Ex: npm run test 1");
-}
-
-function printStudentIdWarning() {
-  console.warn("Enter a unique Student Id in the file .student-id");
-}

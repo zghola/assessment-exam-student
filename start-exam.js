@@ -1,9 +1,10 @@
 const fs          = require("fs");
 const APIClient   = require("./api-client");
+const Messages    = require("./messages");
 
 const studentId = fs.readFileSync("./.student-id", "utf8");
 if (!studentId) {
-  printStudentIdWarning();
+  console.log(Messages.StudentIdWarning);
   process.exit(1);
 }
 

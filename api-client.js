@@ -1,5 +1,5 @@
 const request = require("request");
-const SUBMISSION_URL  = "http://127.0.0.1:3000/assessments/"; // TODO Update this submission URL
+const SUBMISSION_URL  = "http://127.0.0.1:3000/submissions/";
 const EXAM_BASE_URL   = "http://127.0.0.1:3000/exams/";
 
 class APIClient {
@@ -11,10 +11,7 @@ class APIClient {
       json: {
         studentId: studentId
       }
-    }, (err, response, body) => {
-      
-      cb(err, response, body);
-    });
+    }, cb);
   }
   
   submit(testResultData, cb) {
@@ -22,10 +19,7 @@ class APIClient {
       url: SUBMISSION_URL,
       method: "POST",
       json: testResultData
-    }, (err, response, body) => {
-      
-      cb(err, response, body);
-    });
+    }, cb);
   }
 }
 
