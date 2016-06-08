@@ -12,6 +12,9 @@ const examId = process.argv[2] || "web-01";
 
 const apiClient = new APIClient();
 apiClient.startExam(studentId, examId, (err, res, body) => {
+  if (err) {
+    return console.error(err);
+  }
   const exam = body;
   for (let question of exam.questions) {
     if (!question) {
@@ -19,6 +22,7 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
     }
     
     // write exam files to local disk
+    // TODO check if file exists already (avoid overwriting)
     fs.writeFileSync(question.testPath, question.testCode);
     fs.writeFileSync(question.codePath, question.code);
   }

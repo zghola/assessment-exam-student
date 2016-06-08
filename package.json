@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start-exam": "node start-exam.js",
-    "test": "node index.js"
+    "question": "node index.js"
   },
   "author": "Philip Jama",
   "license": "Proprietary",

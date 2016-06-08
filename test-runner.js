@@ -9,21 +9,25 @@ class TestRunner {
     this.mocha = new Mocha();
   }
 
-  run(testNumber, cb) {
+  run(questionNumber, cb) {
     const results = {
       examId:         "web-01",
-      questionNumber: parseInt(testNumber), 
-      lintResults:    this.runLint(testNumber),
+      questionNumber: parseInt(questionNumber), 
+      lintResults:    this.runLint(questionNumber),
       testResults:    null, // Mocha, next step
       errors:         []
     };
     
     try {
-      this.runMocha(testNumber)
-        .then((testResults) => {
-          results.testResults = testResults;
-          cb(null, results);
-        });
+      this.runMocha(questionNumber)
+        .then(
+          (testResults) => {
+            results.testResults = testResults;
+            cb(null, results);
+          },
+          (err) => {
+            console.console.error(err);
+          });
     } catch (e) {
       console.error(e);
       results.errors.push(e);
@@ -31,35 +35,35 @@ class TestRunner {
     }
   }
 
-  runLint(testNumber) {
+  runLint(questionNumber) {
     const lintOptions = { 
       rules: LINT_RULES,
       globals: { module: {} }
     };
-    const codeFile = this.getCodeFile(testNumber);
+    const codeFile = this.getCodeFile(questionNumber);
     const code = fs.readFileSync(codeFile, "utf8");
     return eslint.linter.verify(code, lintOptions);
   }
   
-  runMocha(testNumber, cb) {
-    const testFile = this.getTestFile(testNumber);
+  runMocha(questionNumber, cb) {
+    const testFile = this.getTestFile(questionNumber);
     return new Promise((resolve, reject) => {
       this.mocha.addFile(testFile);
       this.mocha
-        .run()
+        .run((failures) => {})
         .on("end", function() {
           resolve(this.stats); // return test statistics
         });
     });
   }
   
-  getCodeFile(testNumber) {
-    const paddedNumber = this.padNumber(testNumber, 2);
+  getCodeFile(questionNumber) {
+    const paddedNumber = this.padNumber(questionNumber, 2);
     return `./answers/${paddedNumber}.js`;
   }
   
-  getTestFile(testNumber) {
-    const paddedNumber = this.padNumber(testNumber, 2);
+  getTestFile(questionNumber) {
+    const paddedNumber = this.padNumber(questionNumber, 2);
     return `./tests/test_${paddedNumber}.js`;
   }
   
