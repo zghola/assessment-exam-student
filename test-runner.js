@@ -9,12 +9,13 @@ class TestRunner {
     this.mocha = new Mocha();
   }
 
-  run(testNumber, cb) {    
+  run(testNumber, cb) {
     const results = {
-      testNumber: parseInt(testNumber), 
-      lintResults: this.runLint(testNumber),
-      testResults: null, // Mocha, next step
-      errors: []
+      examId:         "web-01",
+      questionNumber: parseInt(testNumber), 
+      lintResults:    this.runLint(testNumber),
+      testResults:    null, // Mocha, next step
+      errors:         []
     };
     
     try {
@@ -54,7 +55,7 @@ class TestRunner {
   
   getCodeFile(testNumber) {
     const paddedNumber = this.padNumber(testNumber, 2);
-    return `./lib/${paddedNumber}.js`;
+    return `./answers/${paddedNumber}.js`;
   }
   
   getTestFile(testNumber) {
