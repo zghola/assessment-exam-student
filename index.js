@@ -19,12 +19,45 @@ if (!questionNumber) {
 const testRunner = new TestRunner();
 const apiClient = new APIClient();
 
+printTestStart(questionNumber);
 testRunner.run(questionNumber, (err, results) => {
   results.studentId = studentId.trim();
+  printLintResults(results.lintResults);
   apiClient.submit(results, (err, response, body) => {
     if (err) {
       console.error(err);
     }
-    console.log(body);
+    printGradingScore(body);
   });
 });
+
+function printTestStart(questionNumber) {
+  console.log(`Running Tests for Question ${questionNumber}`);
+  console.log("------------");
+}
+
+function printLintResults(lintResults) {
+  console.log("Lint Results");
+  console.log("------------");
+  if (lintResults.length == 0) {
+    console.log("(Everything appears to OK)")
+    console.log("\n");
+    return;
+  }
+  for (let i=0; i<lintResults.length; i++) {
+    let result = lintResults[i];
+    console.log(`${i+1}) ${result.message} (Line ${result.line}, Column ${result.column})`);
+    console.log(`   Source: "${result.source}"`);
+  }
+  console.log("\n");
+}
+
+function printGradingScore(gradingResults) {
+  console.log("Overall Score");
+  console.log("------------");
+  for (let i=0; i<gradingResults.scores.length; i++) {
+    let question = gradingResults.scores[i];
+    console.log(`Q${question.questionNumber}. ${question.score}/${question.maxScore}`);
+  }
+  console.log("\n");
+}

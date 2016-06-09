@@ -11,7 +11,7 @@ class TestRunner {
 
   run(questionNumber, cb) {
     const results = {
-      examId:         "web-01",
+      examId:         "web-01", // TODO get this from config file or something (!)
       questionNumber: parseInt(questionNumber), 
       lintResults:    this.runLint(questionNumber),
       testResults:    null, // Mocha, next step
