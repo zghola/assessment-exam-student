@@ -1,3 +1,4 @@
+const crypto  = require("crypto");
 const eslint  = require("eslint");
 const fs      = require("fs");
 const Mocha   = require("mocha");
@@ -10,24 +11,27 @@ class TestRunner {
   }
 
   run(questionNumber, cb) {
+    const codeFile = this.getCodeFile(questionNumber);
+    const code = fs.readFileSync(codeFile, "utf8");
+    
     const results = {
       examId:         "web-01", // TODO get this from config file or something (!)
       questionNumber: parseInt(questionNumber), 
-      lintResults:    this.runLint(questionNumber),
+      lintResults:    this.runLint(code),
       testResults:    null, // Mocha, next step
+      testFileHash:   null,
+      studentCode:    code,
       errors:         []
     };
     
     try {
       this.runMocha(questionNumber)
-        .then(
-          (testResults) => {
-            results.testResults = testResults;
+        .then((mochaResults) => {
+            results.testResults = mochaResults.stats;
+            results.testFileHash = mochaResults.hash;
             cb(null, results);
           },
-          (err) => {
-            console.console.error(err);
-          });
+          (err) => { throw err; });
     } catch (e) {
       console.error(e);
       results.errors.push(e);
@@ -35,24 +39,23 @@ class TestRunner {
     }
   }
 
-  runLint(questionNumber) {
+  runLint(code) {
     const lintOptions = { 
       rules: LINT_RULES,
       globals: { module: {} }
     };
-    const codeFile = this.getCodeFile(questionNumber);
-    const code = fs.readFileSync(codeFile, "utf8");
     return eslint.linter.verify(code, lintOptions);
   }
   
   runMocha(questionNumber, cb) {
     const testFile = this.getTestFile(questionNumber);
+    const testHash = this.getFileHash(testFile);
     return new Promise((resolve, reject) => {
       this.mocha.addFile(testFile);
       this.mocha
         .run((failures) => {})
         .on("end", function() {
-          resolve(this.stats); // return test statistics
+          resolve({ stats: this.stats, hash: testHash }); // return test statistics
         });
     });
   }
@@ -73,6 +76,11 @@ class TestRunner {
       s = "0" + s;
     }
     return s;
+  }
+  
+  getFileHash(filePath) {
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    return crypto.createHash("md5").update(fileContents).digest("hex");
   }
 }
 
