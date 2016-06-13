@@ -28,7 +28,7 @@ testRunner.run(questionNumber, (err, results) => {
       printSubmissionError(err);
       return;
     }
-    printGradingScore(body);
+    printSubmissionResponse(body);
   });
 });
 
@@ -53,14 +53,20 @@ function printLintResults(lintResults) {
   console.log("\n");
 }
 
-function printGradingScore(gradingResults) {
+function printSubmissionResponse(responseBody) {
   console.log("Overall Score");
   console.log("------------");
-  for (let i=0; i<gradingResults.scores.length; i++) {
-    let question = gradingResults.scores[i];
+  for (let i=0; i<responseBody.scores.length; i++) {
+    let question = responseBody.scores[i];
     console.log(`Q${question.questionNumber}. ${question.score}/${question.maxScore}`);
   }
-  console.log("\n");
+  if (responseBody.remainingTime > 0) {
+    const hours = Math.round(responseBody.remainingTime/60);
+    const minutes = Math.round(responseBody.remainingTime%60);
+    console.log(`\nTime Remaining: ${hours}h${minutes}m\n`);
+  } else {
+    console.log("\nTime Remaining: None (Submission NOT accepted)\n");
+  }
 }
 
 function printSubmissionError(err) {
