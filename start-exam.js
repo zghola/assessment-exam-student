@@ -35,6 +35,7 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
 
 function printServerError(statusCode, body) {
   switch(body.code) {
+    // https://www.postgresql.org/docs/current/static/errcodes-appendix.html
     case "23505":
       console.warn("Uniqueness Violation\nHave you already started (or completed) the exam?\n");
       break;
