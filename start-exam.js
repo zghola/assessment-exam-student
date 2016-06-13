@@ -13,6 +13,11 @@ const examId = process.argv[2] || "web-01";
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);
 apiClient.startExam(studentId, examId, (err, res, body) => {
+  if (err) {
+    console.error(`Error: (${err.code})`);
+    console.warn("Your test has NOT been started!\n");
+    return;
+  }
   if (res.statusCode != 200) {
     return printServerError(res.statusCode, body);
   }
