@@ -61,8 +61,8 @@ function printSubmissionResponse(responseBody) {
     console.log(`Q${question.questionNumber}. ${question.score}/${question.maxScore}`);
   }
   if (responseBody.remainingTime > 0) {
-    const hours = Math.round(responseBody.remainingTime/60);
-    const minutes = Math.round(responseBody.remainingTime%60);
+    const hours = Math.floor(responseBody.remainingTime/60);
+    const minutes = Math.floor(responseBody.remainingTime%60);
     console.log(`\nTime Remaining: ${hours}h${minutes}m\n`);
   } else {
     console.log("\nTime Remaining: None (Submission NOT accepted)\n");
