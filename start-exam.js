@@ -13,8 +13,8 @@ const examId = process.argv[2] || "web-01";
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);
 apiClient.startExam(studentId, examId, (err, res, body) => {
-  if (err) {
-    return console.error(err);
+  if (res.statusCode != 200) {
+    return printServerError(res.statusCode, body);
   }
   const exam = body;
   console.log(`Server Response: ${exam.questions.length} Questions:`);
@@ -32,3 +32,14 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
   }
   console.log("\n"); // create blank space
 });
+
+function printServerError(statusCode, body) {
+  switch(body.code) {
+    case "23505":
+      console.warn("Uniqueness Violation\nHave you already started (or completed) the exam?\n");
+      break;
+    default:
+      console.error(`Unknown Error (HTTP Status Code ${statusCode}), Error:\n ${body}\n`);
+      break;
+  }
+}
