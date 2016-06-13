@@ -25,7 +25,8 @@ testRunner.run(questionNumber, (err, results) => {
   printLintResults(results.lintResults);
   apiClient.submit(results, (err, response, body) => {
     if (err) {
-      console.error(err);
+      printSubmissionError(err);
+      return;
     }
     printGradingScore(body);
   });
@@ -60,4 +61,10 @@ function printGradingScore(gradingResults) {
     console.log(`Q${question.questionNumber}. ${question.score}/${question.maxScore}`);
   }
   console.log("\n");
+}
+
+function printSubmissionError(err) {
+  console.error(`ERROR: (${err.code})\n`);
+  console.info(err);
+  console.warn("\nYour test results have NOT been submitted!\n");  
 }
