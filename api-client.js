@@ -1,6 +1,8 @@
 const request = require("request");
-const SUBMISSION_URL  = "http://127.0.0.1:3000/submissions/";
-const EXAM_BASE_URL   = "http://127.0.0.1:3000/exams/";
+
+const BASE_URL        = "https://lighthouse-proctologist.herokuapp.com";
+const SUBMISSION_URL  = `${BASE_URL}/submissions/`;
+const EXAM_BASE_URL   = `${BASE_URL}/exams/`;
 
 class APIClient {
   startExam(studentId, examId="web-01", cb) {
