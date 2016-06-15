@@ -65,7 +65,7 @@ function printSubmissionResponse(responseBody) {
     const minutes = Math.floor(responseBody.remainingTime%60);
     console.log(`\nTime Remaining: ${hours}h${minutes}m\n`);
   } else {
-    console.log("\nTime Remaining: None (Submission NOT accepted)\n");
+    console.log("\nTime Remaining: None (Submission still accepted)\n");
   }
 }
 
