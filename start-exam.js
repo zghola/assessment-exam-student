@@ -9,6 +9,8 @@ if (!studentId) {
 }
 
 const examId = process.argv[2] || "web-01";
+const examDataString = JSON.stringify({examId: examId}, null, 2);
+fs.writeFileSync(".exam-data", examDataString);
 
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);

@@ -13,9 +13,11 @@ class TestRunner {
   run(questionNumber, cb) {
     const codeFile = this.getCodeFile(questionNumber);
     const code = fs.readFileSync(codeFile, "utf8");
+    const examData = JSON.parse(fs.readFileSync(".exam-data", "utf8"));
     
+    console.log("submitting !!", examData.examId)
     const results = {
-      examId:         "web-01", // TODO get this from config file or something (!)
+      examId:         examData.examId,
       questionNumber: parseInt(questionNumber), 
       lintResults:    this.runLint(code),
       testResults:    null, // Mocha, next step
