@@ -45,3 +45,13 @@ You can run this command multiple times for any of the test's questions througho
 Now you're ready to start answering questions!
 
 Your solutions should be entered in the `answers/` directory. Each question has a corresponding solution file (`00.js` corresponding to _Question 0_).
+
+
+
+### Debugging Questions Independently
+
+If you'd like to test your code outside of the testing system, you can do so as follows:
+
+  1. Start the Node REPL by running `node`
+  2. In the REPL, load your file: `.load ./answers/00.js`
+  3. Use your functions (ex. `myFun([1,2,3])`)
