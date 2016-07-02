@@ -32,9 +32,11 @@ class TestRunner {
             results.testFileHash = mochaResults.hash;
             cb(null, results);
           },
-          (err) => { throw err; });
+          (err) => {
+            console.error(err);
+            throw err;
+          });
     } catch (e) {
-      console.error(e);
       results.errors.push(e);
       cb(e, results);
     }
