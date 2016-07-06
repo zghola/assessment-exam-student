@@ -15,7 +15,6 @@ class TestRunner {
     const code = fs.readFileSync(codeFile, "utf8");
     const examData = JSON.parse(fs.readFileSync(".exam-data", "utf8"));
     
-    console.log("submitting !!", examData.examId)
     const results = {
       examId:         examData.examId,
       questionNumber: parseInt(questionNumber), 
@@ -33,9 +32,11 @@ class TestRunner {
             results.testFileHash = mochaResults.hash;
             cb(null, results);
           },
-          (err) => { throw err; });
+          (err) => {
+            console.error(err);
+            throw err;
+          });
     } catch (e) {
-      console.error(e);
       results.errors.push(e);
       cb(e, results);
     }
