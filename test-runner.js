@@ -27,18 +27,20 @@ class TestRunner {
     };
     
     try {
+      const testFile = this.getTestFile(questionNumber);
+      results.testFileHash = this.getFileHash(testFile);
+      
       this.runMocha(questionNumber)
         .then((mochaResults) => {
             results.testResults = mochaResults.stats;
-            results.testFileHash = mochaResults.hash;
             cb(null, results);
           },
           (err) => {
+            results.errors.push(err);
             console.error(err.stack);
-            throw err;
+            cb(err, results);
           });
     } catch (e) {
-      results.errors.push(e);
       cb(e, results);
     }
   }
@@ -57,13 +59,12 @@ class TestRunner {
   
   runMocha(questionNumber, cb) {
     const testFile = this.getTestFile(questionNumber);
-    const testHash = this.getFileHash(testFile);
     return new Promise((resolve, reject) => {
       this.mocha.addFile(testFile);
       this.mocha
         .run((failures) => {})
         .on("end", function() {
-          resolve({ stats: this.stats, hash: testHash }); // return test statistics
+          resolve({ stats: this.stats }); // return test statistics
         });
     });
   }
