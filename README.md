@@ -18,7 +18,11 @@ This file should contain only your user name (without any spaces, new lines, or 
 
 #### 2) Install Required Packages
 
-First install the requirements (`npm install`).
+First install the requirements:
+
+```terminal
+npm install --no-bin-links
+```
 
 #### 3) Start an Exam
 
@@ -28,7 +32,11 @@ The command to start an exam `npm run start-exam {EXAM-ID}`
 npm run start-exam web-01
 ```
 
-#### 4) Running Test Questions
+### Answering Questions
+
+Now you're ready to start answering questions!
+
+Your solutions should be entered in the `answers/` directory. Each question has a corresponding solution file (`00.js` corresponding to _Question 0_).
 
 Then from the command line, execute a specific test question using `npm run question {QUESTION-#}`
 
@@ -38,14 +46,7 @@ For instance:
 npm run question 0
 ```
 
-You can run this command multiple times for any of the test's questions throughout your development process.
-
-### Answering Questions
-
-Now you're ready to start answering questions!
-
-Your solutions should be entered in the `answers/` directory. Each question has a corresponding solution file (`00.js` corresponding to _Question 0_).
-
+You can run this command multiple times for any of the test questions throughout your development process.
 
 
 ### Debugging Questions Independently
