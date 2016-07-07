@@ -26,10 +26,12 @@ npm install --no-bin-links
 
 #### 3) Start an Exam
 
-The command to start an exam `npm run start-exam {EXAM-ID}`
+Once you start the exam, the three hour timer will start.
+
+The command to start an exam (the exam-id will be given to you by the instructor).
 
 ```terminal
-npm run start-exam web-01
+npm run start-exam EXAM-ID
 ```
 
 ### Answering Questions
@@ -38,9 +40,9 @@ Now you're ready to start answering questions!
 
 Your solutions should be entered in the `answers/` directory. Each question has a corresponding solution file (`00.js` corresponding to _Question 0_).
 
-Then from the command line, execute a specific test question using `npm run question {QUESTION-#}`
+Then from the command line, execute a specific test question using `npm run question {QUESTION-#}`.
 
-For instance:
+The following command, for instance, will run the first question:
 
 ```terminal
 npm run question 0
@@ -48,7 +50,5 @@ npm run question 0
 
 You can run this command multiple times for any of the test questions throughout your development process.
 
+Every time you run the automated tests, it will also run a linter.
 
-### Debugging Questions Independently
-
-You can run your code independently by doing: `node answers/00.js`
