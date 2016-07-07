@@ -34,7 +34,7 @@ class TestRunner {
             cb(null, results);
           },
           (err) => {
-            console.error(err);
+            console.error(err.stack);
             throw err;
           });
     } catch (e) {
