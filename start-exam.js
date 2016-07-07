@@ -15,6 +15,8 @@ fs.writeFileSync(".exam-data", examDataString);
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);
 apiClient.startExam(studentId, examId, (err, res, body) => {
+  "use strict"      // TODO remove this with newer versions of Node.js
+
   if (err) {
     console.error(`Error: (${err.code})`);
     console.warn("Your test has NOT been started!\n");

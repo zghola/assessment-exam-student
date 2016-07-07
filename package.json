@@ -11,7 +11,7 @@
     "question": "node index.js"
   },
   "author": "Philip Jama",
-  "license": "Proprietary",
+  "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
     "eslint": "^2.11.1",
