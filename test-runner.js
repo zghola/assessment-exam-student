@@ -46,7 +46,11 @@ class TestRunner {
   runLint(code) {
     const lintOptions = { 
       rules: LINT_RULES,
-      globals: { module: {} }
+      globals: { module: {} },
+      env: {
+        "es6": true,
+        "node": true
+      }
     };
     return eslint.linter.verify(code, lintOptions);
   }
