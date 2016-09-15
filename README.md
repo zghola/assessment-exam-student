@@ -1,18 +1,20 @@
 # Assessment Exam
 
+This repository helps you (the student) with your assessment test. From this repo you will start your test, write your solution codes, and submit your answers using the command line.
+
 Let's start by cloning this repo to your local Vagrant machine
 
 ```terminal
 git clone git@github.com:lighthouse-labs/assessment-exam-student.git
 ```
 
-## Usage
+## Instructions
 
 Please complete the following setup steps before continuing:
 
 ### 1) Specify your **GitHub user name** in the file `.student-id` 
 
-This file should contain only your user name (without any spaces, new lines, or other text).
+This file should contain only your **user name** (without any spaces, new lines, or other text).
 
 ### 2) Install Required Packages
 
@@ -28,7 +30,9 @@ Enter the command to start an exam. (**NOTE:** replace `[EXAM-ID]` with the exam
 npm run start-exam [EXAM-ID]
 ```
 
-Once you start the exam, the three hour timer will start.
+This command downloads the test questions to your local file system. You should see two new directories, `answers/` and `tests/`.
+
+Once you start the exam, the test timer will start (typically 3 hours).
 
 ## Answering Questions
 
@@ -42,8 +46,9 @@ Then from the command line, execute a specific test question using `npm run ques
 npm run question 0
 ```
 
-You can submit questions multiple times during your development process.
+## Submission Grading
 
-Points are awarded based on how your solutions perform during evaluation.
-
-Points are deducted for syntax errors.
+* You can submit questions multiple times during your development process
+* Points are awarded based on how your solutions perform during evaluation
+* Points are deducted for syntax errors
+* Submissions will still be accepted after the end of the test period
