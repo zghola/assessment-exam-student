@@ -2,19 +2,17 @@
 
 This repository helps you (the student) with your assessment test. From this repo you will start your test, write your solution codes, and submit your answers using the command line.
 
-Let's start by cloning this repo to your local Vagrant machine
+> Start by cloning this repo to your local Vagrant machine
 
 ```terminal
 git clone git@github.com:lighthouse-labs/assessment-exam-student.git
 ```
 
-## Instructions
-
-Please complete the following setup steps before continuing:
-
 ### 1) Specify your **GitHub user name** in the file `.student-id` 
 
 This file should contain only your **user name** (without any spaces, new lines, or other text).
+
+* **NOTE: Ensure your user name is spelled correctly!** 
 
 ### 2) Install Required Packages
 
@@ -24,25 +22,29 @@ npm install --no-bin-links
 
 ### 3) Start an Exam from a terminal window
 
-Enter the command to start an exam. (**NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor)
+> Enter the command below to start an exam. 
+
+* **NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor)
+* Once you start the exam, the test timer will start (typically 3 hours).
 
 ```terminal
 npm run start-exam [EXAM-ID]
 ```
 
-This command downloads the test questions to your local file system. You should see two new directories, `answers/` and `tests/`.
-
-Once you start the exam, the test timer will start (typically 3 hours).
+This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
 
 ## Answering Questions
 
 Now you're ready to start answering questions!
 
-Your solutions should be entered in the `answers/` directory.  For example, open `answers/00.js` in your text editor to write your solution code
+1. Open the `answers/` directory in your code editor to write your solution.
 
-Then from the command line, execute a specific test question using `npm run question [QUESTION-#]`. For instance,
+2. From the command line, execute a specific test question using the command below:
+
+* **NOTE:** replace `[QUESTION-ID]` with the question number starting at 0)
 
 ```terminal
+npm run question [QUESTION-#]
 npm run question 0
 ```
 
