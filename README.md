@@ -52,5 +52,5 @@ npm run question 0
 
 * You can submit questions multiple times during your development process
 * Points are awarded based on how your solutions perform during evaluation
-* Points are deducted for syntax errors
+* Points are deducted for lint (style) errors
 * Submissions will still be accepted after the end of the test period
