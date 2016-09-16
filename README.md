@@ -2,7 +2,7 @@
 
 This repository helps you (the student) with your assessment test. From this repo you will start your test, write your solution codes, and submit your answers using the command line.
 
-> Start by cloning this repo to your local Vagrant machine
+> To start, **CLONE** (not _fork_) the following repo to your local Vagrant machine:
 
 ```terminal
 git clone git@github.com:lighthouse-labs/assessment-exam-student.git
