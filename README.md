@@ -8,10 +8,11 @@ Please carefully follow the instructions below to get started:
 
 ---
 
-> 0) To start, **CLONE** (not _fork_) the following repo to your local Vagrant machine:
+> 0) To start, **CLONE** (not _fork_) the following repo to your local Vagrant machine, and `cd` into the folder:
 
 ```terminal
 git clone git@github.com:lighthouse-labs/assessment-exam-student.git
+cd assessment-exam-student
 ```
 
 ---
