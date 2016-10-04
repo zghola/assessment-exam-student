@@ -200,7 +200,7 @@
   "use-isnan": "error",
   "valid-jsdoc": "off",
   "valid-typeof": "error",
-  "vars-on-top": "error",
+  "vars-on-top": "off",
   "wrap-iife": "error",
   "wrap-regex": "off",
   "yield-star-spacing": "off",
