@@ -31,10 +31,10 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
     if (!question) {
       continue;
     }
-    
+
     // write exam files to local disk
     // TODO check if file exists already (avoid overwriting)
-    
+
     fs.writeFileSync(question.testPath, question.testCode);
     console.log(`\tCreating Question ${question.questionId}\t(${question.maxScore} Points)\tAnswer file: ${question.codePath}`);
     fs.writeFileSync(question.codePath, question.code);
@@ -43,13 +43,6 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
 });
 
 function printServerError(statusCode, body) {
-  switch(body.code) {
-    // https://www.postgresql.org/docs/current/static/errcodes-appendix.html
-    case "23505":
-      console.warn("Uniqueness Violation\nHave you already started (or completed) the exam?\n");
-      break;
-    default:
-      console.error(`Unknown Error (HTTP Status Code ${statusCode}), Error:\n ${body}\n`);
-      break;
-  }
+  console.error(`Server Error (Status Code ${statusCode}):\n`);
+  console.log(`${body}`);
 }
