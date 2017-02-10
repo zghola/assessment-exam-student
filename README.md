@@ -68,31 +68,43 @@ This command downloads the test questions to your local file system. You should 
 
 ## Answering Questions (Detailed Walkthrough)
 
-Now you're ready to start answering questions!
+Now you're ready to start answering questions! Follow these steps carefully:
 
-1. Expand the `answers/` directory in your code editor. Note that the question numbering starts at 0.
+> 1) Expand the `answers/` directory in your code editor. 
 
-2. From the command line, execute the automated tests for the first question, question 0, using the command below (question numbering starts at 0): 
+Note that the question numbering starts at 0.
+
+> 2) Execute the test code
+
+From the command line, execute the automated tests for the first question, question 0, using the command below (question numbering starts at 0): 
 
 ```terminal
 npm run question 0
 ```
 
-3. Read the output carefully and notice that none of the tests for question 0 are passing (well one of them passes by default, so you start with 2 points, no big deal!):
+> 3) Read the output carefully
+
+Notice that none of the tests for question 0 are passing (well one of them passes by default, so you start with 2 points, no big deal!):
 
 ![](https://d.pr/i/rLIC/22mUQewK+)
 
-4. Implement the code for the first function in the question, located in `answers/00.js`.
+> 4) Write some code
 
-5. Run the `npm` command again to make sure you are starting to see solutions:
+Implement the code for the first function (`count`) in the question, located in `answers/00.js`.
+
+Run the `npm run question 0` command again to make sure you are starting to see solutions:
 
 ![](https://d.pr/i/NjfW/59rG0xpf+)
 
-6. Notice that your score for the question also went up. The number of automated tests passing the primary factor for how your score is calculated. 
+Notice that your score for the question also went up. The number of automated tests passing the primary factor for how your score is calculated. 
 
-7. Once you complete `question 0`, go back to step 2 above but this time with `question 1`, the code for which should is in `answers/01.js`. 
+It is recommended that you run the `npm run question [number]` command frequently. If you score close to perfect on a question (eg: all tests pass, but you have lint errors), we suggest you move on and return to polish that code later.
 
-8. **Important:** Run the `npm run question [number]` command frequently. If you score close to perfect on a question (eg: all tests pass, but you have lint errors), we suggest you move on and return to polish that code later.
+> 5) Repeat for all questions
+
+Once you complete `question 0`, repeat these steps but this time with `question 1` (the code for which should is in `answers/01.js`). 
+
+**Important:** 
 
 ## Submission Grading
 
