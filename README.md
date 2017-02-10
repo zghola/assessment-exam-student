@@ -4,11 +4,17 @@ This repository is how you will take your assessment test. From this repo you wi
 
 It is used for both the mock as well as the real test. 
 
-The goal for the mock test is to give you time to become familiar with the setup of workflow for this format, so that you can focus on the challenges for the real test.
+The goal for the mock test is to give you time to become familiar with the setup of workflow for this format, so that you can focus on the challenges for the real test. Therefore, please take the time to carefully follow each step. 
+
+Due to the inclusion of embedded screenshots, we suggest you read this file in HTML format, here: 
+
+<https://github.com/lighthouse-labs/assessment-exam-student> 
 
 ## Getting Started
 
-Please carefully follow the instructions below to get started:
+Please carefully follow the instructions below to get started.
+
+**Important Note:** If you make a mistake in performing these steps (and see unexpected behavior), you will need to RESTART from step 1 (clone the report)!
 
 ----
 
@@ -74,6 +80,8 @@ Now you're ready to start answering questions! Follow these steps carefully:
 
 Note that the question numbering starts at 0.
 
+----
+
 > 2) Execute the test code
 
 From the command line, execute the automated tests for the first question, question 0, using the command below (question numbering starts at 0): 
@@ -82,11 +90,15 @@ From the command line, execute the automated tests for the first question, quest
 npm run question 0
 ```
 
+----
+
 > 3) Read the output carefully
 
 Notice that none of the tests for question 0 are passing (well one of them passes by default, so you start with 2 points, no big deal!):
 
 ![](https://d.pr/i/rLIC/22mUQewK+)
+
+----
 
 > 4) Write some code
 
@@ -100,11 +112,12 @@ Notice that your score for the question also went up. The number of automated te
 
 It is recommended that you run the `npm run question [number]` command frequently. If you score close to perfect on a question (eg: all tests pass, but you have lint errors), we suggest you move on and return to polish that code later.
 
+----
+
 > 5) Repeat for all questions
 
 Once you complete `question 0`, repeat these steps but this time with `question 1` (the code for which should is in `answers/01.js`). 
 
-**Important:** 
 
 ## Submission Grading
 
