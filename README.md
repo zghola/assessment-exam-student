@@ -87,7 +87,7 @@ Server Response: 5 Questions:
   Creating Question 04  (20 Points) Answer file: answers/04.js
 ```
 
-If you see an error, please ensure you are using the correct [exam-id] (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+If you see an error, please ensure you are using the correct `[exam-id]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
 
 ----
 
