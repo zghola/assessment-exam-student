@@ -37,11 +37,11 @@ npm install --no-bin-links
 
 ----
 
-> 3) Open the entire project in Sublime (or Atom)
+> 3) Open the entire project in Visual Studio Code
 
-Open the entire project directory in Sublime. You should see the directory tree on the left hand side: 
+Open the entire project directory in VS Code. You should see the directory tree on the left hand side: 
 
-![screenshot of sublime](https://d.pr/i/tsm3/1HQ278NU+)
+![screenshot of vscode](https://d.pr/i/qNC5oO+)
 
 ----
 
@@ -49,9 +49,9 @@ Open the entire project directory in Sublime. You should see the directory tree 
 
 This file should contain only your **user name** (without any spaces, new lines, or other text). It should be the correct case as well.
 
-![screenshot of github](https://d.pr/i/DJBM/5kFTOJ8Q+)
+![screenshot of GitHub](https://d.pr/i/DJBM/5kFTOJ8Q+)
 
-![screenshot of sublime](http://d.pr/i/152Yr/2xO9yR4L+)
+![screenshot of VS Code](https://d.pr/i/EwR7zU+)
 
 **NOTE: Ensure your user name is spelled correctly!** 
 
