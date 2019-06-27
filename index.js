@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 const fs          = require("fs");
 
 const APIClient   = require("./api-client");
@@ -49,7 +49,6 @@ function printLintResults(lintResults) {
   for (let i=0; i<lintResults.length; i++) {
     let result = lintResults[i];
     console.log(`${i+1}) ${result.message} (Line ${result.line}, Column ${result.column})`);
-    console.log(`   Source: "${result.source}"`);
   }
   console.log("\n");
 }
@@ -73,5 +72,5 @@ function printSubmissionResponse(responseBody) {
 function printSubmissionError(err) {
   console.error(`ERROR: (${err.code})\n`);
   console.info(err);
-  console.warn("\nYour test results have NOT been submitted!\n");  
+  console.warn("\nYour test results have NOT been submitted!\n");
 }
