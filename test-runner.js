@@ -1,7 +1,6 @@
 "use strict";
 const crypto  = require("crypto");
 const eslint  = require("eslint");
-console.log('version: ', eslint.version);
 const fs      = require("fs");
 const Mocha   = require("mocha");
 
