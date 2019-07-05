@@ -15,8 +15,10 @@
   "dependencies": {
     "chai": "^3.5.0",
     "eslint": "^6.0.1",
+    "knex": "^0.18.3",
     "mocha": "^2.5.3",
     "request": "^2.72.0",
-    "sinon": "^1.17.4"
+    "sinon": "^1.17.4",
+    "sqlite3": "^4.0.9"
   }
 }
