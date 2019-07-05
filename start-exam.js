@@ -1,6 +1,6 @@
-const fs          = require("fs");
-const APIClient   = require("./api-client");
-const Messages    = require("./messages");
+const fs = require("fs");
+const APIClient = require("./api-client");
+const Messages = require("./messages");
 
 const studentId = fs.readFileSync("./.student-id", "utf8");
 if (!studentId) {
@@ -9,13 +9,13 @@ if (!studentId) {
 }
 
 const examId = process.argv[2] || "web-01";
-const examDataString = JSON.stringify({examId: examId}, null, 2);
+const examDataString = JSON.stringify({ examId: examId }, null, 2);
 fs.writeFileSync(".exam-data", examDataString);
 
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);
 apiClient.startExam(studentId, examId, (err, res, body) => {
-  "use strict"      // TODO remove this with newer versions of Node.js
+  "use strict"; // TODO remove this with newer versions of Node.js
 
   if (err) {
     console.error(`Error: (${err.code})`);
@@ -36,9 +36,21 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
     // TODO check if file exists already (avoid overwriting)
 
     fs.writeFileSync(question.testPath, question.testCode);
-    console.log(`\tCreating Question ${question.questionId}\t(${question.maxScore} Points)\tAnswer file: ${question.codePath}`);
+    console.log(
+      `\tCreating Question ${question.questionId}\t(${
+        question.maxScore
+      } Points)\tAnswer file: ${question.codePath}`
+    );
     fs.writeFileSync(question.codePath, question.code);
   }
+
+  console.log("Writing supporting files");
+  for (let supportingFile of exam.supportingFiles) {
+    console.log(`\tWriting file: ${supportingFile.fileName}`);
+    let data = Buffer.from(supportingFile.data, "base64");
+    fs.writeFileSync(supportingFile.fileName, data);
+  }
+
   console.log("\n"); // create blank space
 });
 
