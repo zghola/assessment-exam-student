@@ -6,6 +6,7 @@ It is used for both the mock as well as the real test.
 
 The goal for the mock test is to give you time to become familiar with the setup of workflow for this format, so that you can focus on the challenges for the real test. Therefore, please take the time to carefully follow each step. 
 
+
 Due to the inclusion of embedded screenshots, we suggest you read this file in HTML format, here: 
 
 <https://github.com/lighthouse-labs/assessment-exam-student> 
@@ -18,21 +19,47 @@ Please carefully follow the instructions below to get started.
 
 ----
 
-> 1) Clone the repository
+> 1) Install the exam
 
-To start, **CLONE** (do not _fork_) this repo to your local Vagrant machine, and `cd` into the folder:
+To start, run the following command in your root directory within Vagrant (`/vagrant`). Make sure to use your GitHub username. The exam proctor will provide you with the correct Test ID. This command will take a while to run!
 
 ```terminal
-git clone git@github.com:lighthouse-labs/assessment-exam-student.git
-cd assessment-exam-student
+npx exam-installer <GitHub Username> <Test ID>
 ```
 
-> 2) Install Required Packages
-
-Run the following command from within the project directory:
+For example, one might run:
 
 ```terminal
-npm install --no-bin-links
+npx exam-installer NimaBoscarino web-01
+```
+
+**NOTE: Ensure your user name is spelled correctly!** 
+
+
+You should eventually see output that looks like this (note: output may vary based on which test you are taking): 
+
+```
+> assessment-exam-student@1.0.0 start-exam /path/to/assessment-exam-student
+> node start-exam.js "test-id-here"
+
+Contacting Server to Start Exam "test-id-here"
+
+Server Response: 5 Questions:
+  Creating Question 00  (30 Points) Answer file: answers/00.js
+  Creating Question 01  (30 Points) Answer file: answers/01.js
+  Creating Question 02  (20 Points) Answer file: answers/02.js
+  Creating Question 03  (20 Points) Answer file: answers/03.js
+  Creating Question 04  (20 Points) Answer file: answers/04.js
+```
+
+If you see an error, please ensure you are using the correct `[test-id]` (do not include the square brackets). **You may need to delete the folder, and restart the process if the problem persists!**
+
+----
+
+> 2) `cd` into the project folder
+
+```terminal
+cd <Test ID>
 ```
 
 ----
@@ -45,49 +72,9 @@ Open the entire project directory in VS Code. You should see the directory tree 
 
 ----
 
-> 4) Specify your exact **GitHub user name** in the file `.student-id` 
+> 4) Verify that the test questions are present.
 
-This file should contain only your **user name** (without any spaces, new lines, or other text). It should be the correct case as well.
-
-![screenshot of GitHub](https://d.pr/i/DJBM/5kFTOJ8Q+)
-
-![screenshot of VS Code](https://d.pr/i/EwR7zU+)
-
-**NOTE: Ensure your user name is spelled correctly!** 
-
-----
-
-> 5) Start the test from a terminal window
-
-Enter the command below to start the test:
-
-* **NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor
-* Once you start the exam, the test timer will start (typically 3 hours).
-  * The timer is of no real significance since both the mock and real tests are take-home tests that you can finish over the weekend!
-
-```terminal
-npm run start-exam [EXAM-ID]
-```
-
-This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
-
-You should see output that looks like this (note: output may vary based on which test you are taking): 
-
-```
-> assessment-exam-student@1.0.0 start-exam /path/to/assessment-exam-student
-> node start-exam.js "exam-id-here"
-
-Contacting Server to Start Exam "exam-id-here"
-
-Server Response: 5 Questions:
-  Creating Question 00  (30 Points) Answer file: answers/00.js
-  Creating Question 01  (30 Points) Answer file: answers/01.js
-  Creating Question 02  (20 Points) Answer file: answers/02.js
-  Creating Question 03  (20 Points) Answer file: answers/03.js
-  Creating Question 04  (20 Points) Answer file: answers/04.js
-```
-
-If you see an error, please ensure you are using the correct `[exam-id]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+The `exam-installer` command downloads the test questions to your local file system. You should see those files in the `answers/` directory in VS Code.
 
 ----
 
