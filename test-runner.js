@@ -46,6 +46,10 @@ class TestRunner {
   }
 
   runLint(code) {
+    if (!this.examData.linting) {
+      return null;
+    }
+
     const lintOptions = {
       rules: LINT_RULES,
       globals: { module: 'writable' },
