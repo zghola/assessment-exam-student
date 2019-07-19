@@ -9,15 +9,15 @@ const LINT_RULES = require("./lint-rules.json");
 class TestRunner {
   constructor() {
     this.mocha = new Mocha();
+    this.examData = JSON.parse(fs.readFileSync(".exam-data", "utf8"));
   }
 
   run(questionNumber, cb) {
     const codeFile = this.getCodeFile(questionNumber);
     const code = fs.readFileSync(codeFile, "utf8");
-    const examData = JSON.parse(fs.readFileSync(".exam-data", "utf8"));
 
     const results = {
-      examId:         examData.examId,
+      examId:         this.examData.examId,
       questionNumber: parseInt(questionNumber),
       lintResults:    this.runLint(code),
       testResults:    null, // Mocha, next step
@@ -46,6 +46,10 @@ class TestRunner {
   }
 
   runLint(code) {
+    if (!this.examData.linting) {
+      return null;
+    }
+
     const lintOptions = {
       rules: LINT_RULES,
       globals: { module: 'writable' },
@@ -71,7 +75,18 @@ class TestRunner {
 
   getCodeFile(questionNumber) {
     const paddedNumber = this.padNumber(questionNumber, 2);
-    return `./answers/${paddedNumber}.js`;
+    return `./answers/${paddedNumber}${this.getCodeFileExtension()}`;
+  }
+
+  getCodeFileExtension() {
+    switch (this.examData.type) {
+    case "js":
+      return ".js";
+    case "sql":
+      return ".sql";
+    default:
+      return "";
+    }
   }
 
   getTestFile(questionNumber) {
