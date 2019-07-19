@@ -47,13 +47,14 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
 const writeMetadata = (exam) => {
   const examData = {
     examId: exam.examId,
+    linting: exam.lintingEnabled,
     type: exam.type
   };
 
 
   const examDataString = JSON.stringify(examData, null, 2);
   fs.writeFileSync(".exam-data", examDataString);
-}
+};
 
 const writeSupportingFiles = (exam) => {
   if (!exam.supportingFiles) {
