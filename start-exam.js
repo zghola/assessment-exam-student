@@ -9,8 +9,6 @@ if (!studentId) {
 }
 
 const examId = process.argv[2] || "web-01";
-const examDataString = JSON.stringify({examId: examId}, null, 2);
-fs.writeFileSync(".exam-data", examDataString);
 
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam "${examId}"\n`);
@@ -41,8 +39,22 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
   }
   writeSupportingFiles(exam);
 
+  writeMetadata(exam);
+
   console.log("\n"); // create blank space
 });
+
+const writeMetadata = (exam) => {
+  const examData = {
+    examId: exam.examId,
+    linting: exam.lintingEnabled,
+    type: exam.type
+  };
+
+
+  const examDataString = JSON.stringify(examData, null, 2);
+  fs.writeFileSync(".exam-data", examDataString);
+};
 
 const writeSupportingFiles = (exam) => {
   if (!exam.supportingFiles) {
