@@ -19,6 +19,87 @@ Please carefully follow the instructions below to get started.
 
 ----
 
+> 1) Clone the repository
+
+To start, **CLONE** (do not _fork_) this repo to your local Vagrant machine, and `cd` into the folder:
+
+```terminal
+git clone git@github.com:lighthouse-labs/assessment-exam-student.git
+cd assessment-exam-student
+```
+
+> 2) Install Required Packages
+
+Run the following command from within the project directory:
+
+```terminal
+npm install --no-bin-links
+```
+
+----
+
+> 3) Open the entire project in Visual Studio Code
+
+Open the entire project directory in VS Code. You should see the directory tree on the left hand side: 
+
+![screenshot of vscode](https://d.pr/i/qNC5oO+)
+
+----
+
+> 4) Specify your exact **GitHub user name** in the file `.student-id` 
+
+This file should contain only your **user name** (without any spaces, new lines, or other text). It should be the correct case as well.
+
+![screenshot of GitHub](https://d.pr/i/DJBM/5kFTOJ8Q+)
+
+![screenshot of VS Code](https://d.pr/i/EwR7zU+)
+
+**NOTE: Ensure your user name is spelled correctly!** 
+
+----
+
+> 5) Start the test from a terminal window
+
+Enter the command below to start the test:
+
+* **NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor
+* Once you start the exam, the test timer will start (typically 3 hours).
+  * The timer is of no real significance since both the mock and real tests are take-home tests that you can finish over the weekend!
+
+```terminal
+npm run start-exam [EXAM-ID]
+```
+
+This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
+
+You should see output that looks like this (note: output may vary based on which test you are taking): 
+
+```
+> assessment-exam-student@1.0.0 start-exam /path/to/assessment-exam-student
+> node start-exam.js "exam-id-here"
+
+Contacting Server to Start Exam "exam-id-here"
+
+Server Response: 5 Questions:
+  Creating Question 00  (30 Points) Answer file: answers/00.js
+  Creating Question 01  (30 Points) Answer file: answers/01.js
+  Creating Question 02  (20 Points) Answer file: answers/02.js
+  Creating Question 03  (20 Points) Answer file: answers/03.js
+  Creating Question 04  (20 Points) Answer file: answers/04.js
+```
+
+If you see an error, please ensure you are using the correct `[exam-id]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+
+----
+
+## Quick Start, using `exam-installer`
+
+Please carefully follow the instructions below to get started.
+
+**Important Note:** If you make a mistake in performing these steps (and see unexpected behavior), you will need to RESTART from step 1 (clone the report)!
+
+----
+
 > 1) Install the exam
 
 To start, run the following command in your root directory within Vagrant (`/vagrant`). Make sure to use your GitHub username. The exam proctor will provide you with the correct Test ID. This command will take a while to run!
