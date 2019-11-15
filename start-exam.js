@@ -1,18 +1,20 @@
-const fs          = require("fs");
-const APIClient   = require("./api-client");
-const Messages    = require("./messages");
+const fs = require("fs");
+const APIClient = require("./api-client");
+const Messages = require("./messages");
 
-const studentId = fs.readFileSync("./.student-id", "utf8");
-if (!studentId) {
-  console.log(Messages.StudentIdWarning);
-  process.exit(1);
+const examToken = process.argv[2] && process.argv[2].trim();
+
+if (!examToken) {
+  console.log('An exam token is required to start an exam')
+  console.log('Please provide an exam token like the following:')
+  console.log('\n  $ npm run start-exam <EXAM_TOKEN>\n')
+  process.exit(1)
+  return
 }
 
-const examId = process.argv[2] || "web-01";
-
 const apiClient = new APIClient();
-console.log(`Contacting Server to Start Exam "${examId}"\n`);
-apiClient.startExam(studentId, examId, (err, res, body) => {
+console.log(`Contacting Server to Start Exam with token: "${examToken}"\n`);
+apiClient.startExam(examToken, (err, res, body) => {
   "use strict";     // TODO remove this with newer versions of Node.js
 
   if (err) {
@@ -63,7 +65,7 @@ const writeSupportingFiles = (exam) => {
 
   console.log(""); // Empty line
   console.log("Writing Supporting Files:");
-  exam.supportingFiles.forEach(({name, content}) => {
+  exam.supportingFiles.forEach(({ name, content }) => {
     const path = `supporting-files/${name}`;
     const fileContent = Buffer.from(content, 'base64');
     console.log(`\tWriting file: ${path}`);
@@ -71,7 +73,7 @@ const writeSupportingFiles = (exam) => {
   });
 };
 
-const printServerError = function(statusCode, body) {
+const printServerError = function (statusCode, body) {
   console.error(`Server Error (Status Code ${statusCode}):\n`);
   console.log(`${body}`);
 };
