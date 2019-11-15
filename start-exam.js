@@ -25,6 +25,7 @@ apiClient.startExam(examToken, (err, res, body) => {
   if (res.statusCode != 200) {
     return printServerError(res.statusCode, body);
   }
+
   const exam = body;
   console.log(`Server Response: ${exam.questions.length} Questions:`);
   for (let question of exam.questions) {
@@ -41,18 +42,18 @@ apiClient.startExam(examToken, (err, res, body) => {
   }
   writeSupportingFiles(exam);
 
-  writeMetadata(exam);
+  writeMetadata(examToken, exam);
 
   console.log("\n"); // create blank space
 });
 
-const writeMetadata = (exam) => {
+const writeMetadata = (token, exam) => {
   const examData = {
     examId: exam.examId,
+    token,
     linting: exam.lintingEnabled,
     type: exam.type
   };
-
 
   const examDataString = JSON.stringify(examData, null, 2);
   fs.writeFileSync(".exam-data", examDataString);
