@@ -5,9 +5,7 @@ const Messages = require("./messages");
 const examToken = process.argv[2] && process.argv[2].trim();
 
 if (!examToken) {
-  console.log('An exam token is required to start an exam')
-  console.log('Please provide an exam token like the following:')
-  console.log('\n  $ npm run start-exam <EXAM_TOKEN>\n')
+  console.log(Messages.StartExamUsageInstructions)
   process.exit(1)
   return
 }
