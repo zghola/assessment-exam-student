@@ -10,6 +10,23 @@ if (!examToken) {
   return
 }
 
+try {
+  const answerFiles = fs.readdirSync('./answers')
+  if (answerFiles.length > 1) {
+    throw new Error('Answer files exist, please remove them before continuing')
+  }
+
+  const testFiles = fs.readdirSync('./tests')
+  if (testFiles.length > 1) {
+    throw new Error('Test files exist, please remove them before continuing.')
+  }
+} catch (err) {
+  console.log('An error has occured')
+  console.log(err.message)
+  process.exit(1)
+  return
+}
+
 const apiClient = new APIClient();
 console.log(`Contacting Server to Start Exam with token: "${examToken}"\n`);
 apiClient.startExam(examToken, (err, res, body) => {
