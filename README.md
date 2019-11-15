@@ -61,12 +61,12 @@ This file should contain only your **user name** (without any spaces, new lines,
 
 Enter the command below to start the test:
 
-* **NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor
+* **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
 * Once you start the exam, the test timer will start (typically 3 hours).
   * The timer is of no real significance since both the mock and real tests are take-home tests that you can finish over the weekend!
 
 ```terminal
-npm run start-exam [EXAM-ID]
+npm run start-exam [EXAM-TOKEN]
 ```
 
 This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
@@ -87,7 +87,7 @@ Server Response: 5 Questions:
   Creating Question 04  (20 Points) Answer file: answers/04.js
 ```
 
-If you see an error, please ensure you are using the correct `[exam-id]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+If you see an error, please ensure you are using the correct `[EXAM-TOKEN]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
 
 ----
 
