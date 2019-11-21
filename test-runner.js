@@ -18,6 +18,7 @@ class TestRunner {
 
     const results = {
       examId:         this.examData.examId,
+      examToken:      this.examData.token,
       questionNumber: parseInt(questionNumber),
       lintResults:    this.runLint(code),
       testResults:    null, // Mocha, next step

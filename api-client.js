@@ -3,8 +3,7 @@
 const request = require("request");
 
 const BASE_URL        = "https://lighthouse-proctologist.herokuapp.com";
-const SUBMISSION_URL  = `${BASE_URL}/submissions/`;
-const EXAM_BASE_URL   = `${BASE_URL}/api/v2/exams`;
+const EXAM_BASE_URL = `${BASE_URL}/api/v2/exams`;
 
 class APIClient {
   startExam(examToken, cb) {
@@ -14,10 +13,11 @@ class APIClient {
       json: {} // Set to automatically parse response as JSON
     }, cb);
   }
-  
+
   submit(testResultData, cb) {
     request({
-      url: SUBMISSION_URL,
+      url: `${EXAM_BASE_URL}/${testResultData.examId}`,
+      auth: { bearer: testResultData.examToken },
       method: "POST",
       json: testResultData
     }, cb);
