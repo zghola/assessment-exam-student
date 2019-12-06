@@ -75,7 +75,7 @@ const writeMetadata = (token, exam) => {
 };
 
 const writeSupportingFiles = (exam) => {
-  if (!exam.supportingFiles) {
+  if (!exam.supportingFiles || exam.supportingFiles.length === 0) {
     return;
   }
 
