@@ -45,24 +45,12 @@ Open the entire project directory in VS Code. You should see the directory tree 
 
 ----
 
-> 4) Specify your exact **GitHub user name** in the file `.student-id` 
-
-This file should contain only your **user name** (without any spaces, new lines, or other text). It should be the correct case as well.
-
-![screenshot of GitHub](https://d.pr/i/DJBM/5kFTOJ8Q+)
-
-![screenshot of VS Code](https://d.pr/i/EwR7zU+)
-
-**NOTE: Ensure your user name is spelled correctly!** 
-
-----
-
-> 5) Start the test from a terminal window
+> 4) Start the test from a terminal window
 
 Enter the command below to start the test:
 
 * **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
-* Once you start the exam, the test timer will start (typically 3 hours).
+* Once you start the exam, the test timer will start (typically 2-3 hours).
   * The timer is of no real significance since both the mock and real tests are take-home tests that you can finish over the weekend!
 
 ```terminal
