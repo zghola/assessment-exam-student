@@ -91,5 +91,5 @@ const writeSupportingFiles = (exam) => {
 
 const printServerError = function (statusCode, body) {
   console.error(`Server Error (Status Code ${statusCode}):\n`);
-  console.log(`${body}`);
+  console.log(body.error);
 };
