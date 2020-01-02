@@ -45,28 +45,16 @@ Open the entire project directory in VS Code. You should see the directory tree 
 
 ----
 
-> 4) Specify your exact **GitHub user name** in the file `.student-id` 
-
-This file should contain only your **user name** (without any spaces, new lines, or other text). It should be the correct case as well.
-
-![screenshot of GitHub](https://d.pr/i/DJBM/5kFTOJ8Q+)
-
-![screenshot of VS Code](https://d.pr/i/EwR7zU+)
-
-**NOTE: Ensure your user name is spelled correctly!** 
-
-----
-
-> 5) Start the test from a terminal window
+> 4) Start the test from a terminal window
 
 Enter the command below to start the test:
 
-* **NOTE:** replace `[EXAM-ID]` with the exam ID provided by the instructor
-* Once you start the exam, the test timer will start (typically 3 hours).
+* **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
+* Once you start the exam, the test timer will start (typically 2-3 hours).
   * The timer is of no real significance since both the mock and real tests are take-home tests that you can finish over the weekend!
 
 ```terminal
-npm run start-exam [EXAM-ID]
+npm run start-exam [EXAM-TOKEN]
 ```
 
 This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
@@ -87,7 +75,7 @@ Server Response: 5 Questions:
   Creating Question 04  (20 Points) Answer file: answers/04.js
 ```
 
-If you see an error, please ensure you are using the correct `[exam-id]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+If you see an error, please ensure you are using the correct `[EXAM-TOKEN]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
 
 ----
 

@@ -1,18 +1,35 @@
-const fs          = require("fs");
-const APIClient   = require("./api-client");
-const Messages    = require("./messages");
+const fs = require("fs");
+const APIClient = require("./api-client");
+const Messages = require("./messages");
 
-const studentId = fs.readFileSync("./.student-id", "utf8");
-if (!studentId) {
-  console.log(Messages.StudentIdWarning);
-  process.exit(1);
+const examToken = process.argv[2] && process.argv[2].trim();
+
+if (!examToken) {
+  console.log(Messages.StartExamUsageInstructions)
+  process.exit(1)
+  return
 }
 
-const examId = process.argv[2] || "web-01";
+try {
+  const answerFiles = fs.readdirSync('./answers')
+  if (answerFiles.length > 1) {
+    throw new Error('Answer files exist, please remove them before continuing')
+  }
+
+  const testFiles = fs.readdirSync('./tests')
+  if (testFiles.length > 1) {
+    throw new Error('Test files exist, please remove them before continuing.')
+  }
+} catch (err) {
+  console.log('An error has occured')
+  console.log(err.message)
+  process.exit(1)
+  return
+}
 
 const apiClient = new APIClient();
-console.log(`Contacting Server to Start Exam "${examId}"\n`);
-apiClient.startExam(studentId, examId, (err, res, body) => {
+console.log(`Contacting Server to Start Exam with token: "${examToken}"\n`);
+apiClient.startExam(examToken, (err, res, body) => {
   "use strict";     // TODO remove this with newer versions of Node.js
 
   if (err) {
@@ -23,6 +40,7 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
   if (res.statusCode != 200) {
     return printServerError(res.statusCode, body);
   }
+
   const exam = body;
   console.log(`Server Response: ${exam.questions.length} Questions:`);
   for (let question of exam.questions) {
@@ -39,31 +57,31 @@ apiClient.startExam(studentId, examId, (err, res, body) => {
   }
   writeSupportingFiles(exam);
 
-  writeMetadata(exam);
+  writeMetadata(examToken, exam);
 
   console.log("\n"); // create blank space
 });
 
-const writeMetadata = (exam) => {
+const writeMetadata = (token, exam) => {
   const examData = {
     examId: exam.examId,
+    token,
     linting: exam.lintingEnabled,
     type: exam.type
   };
-
 
   const examDataString = JSON.stringify(examData, null, 2);
   fs.writeFileSync(".exam-data", examDataString);
 };
 
 const writeSupportingFiles = (exam) => {
-  if (!exam.supportingFiles) {
+  if (!exam.supportingFiles || exam.supportingFiles.length === 0) {
     return;
   }
 
   console.log(""); // Empty line
   console.log("Writing Supporting Files:");
-  exam.supportingFiles.forEach(({name, content}) => {
+  exam.supportingFiles.forEach(({ name, content }) => {
     const path = `supporting-files/${name}`;
     const fileContent = Buffer.from(content, 'base64');
     console.log(`\tWriting file: ${path}`);
@@ -71,7 +89,7 @@ const writeSupportingFiles = (exam) => {
   });
 };
 
-const printServerError = function(statusCode, body) {
+const printServerError = function (statusCode, body) {
   console.error(`Server Error (Status Code ${statusCode}):\n`);
-  console.log(`${body}`);
+  console.log(body.error);
 };

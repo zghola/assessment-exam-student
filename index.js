@@ -5,12 +5,6 @@ const APIClient   = require("./api-client");
 const Messages    = require("./messages");
 const TestRunner  = require("./test-runner");
 
-const studentId = fs.readFileSync("./.student-id", "utf8");
-if (!studentId) {
-  console.log(Messages.StudentIdWarning);
-  process.exit(1);
-}
-
 const questionNumber = process.argv[2];
 if (!questionNumber) {
   console.log(Messages.UsageInstructions);
@@ -69,7 +63,6 @@ const apiClient = new APIClient();
 
 printTestStart(questionNumber);
 testRunner.run(questionNumber, (err, results) => {
-  results.studentId = studentId.trim();
   printLintResults(results.lintResults);
   apiClient.submit(results, (err, response, body) => {
     if (err) {
