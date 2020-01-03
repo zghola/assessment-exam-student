@@ -52,7 +52,7 @@ Enter the command below to start the test:
 * **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
 * Once you start the exam, the test timer will start (typically 2-3 hours).
   * Please keep the timer in mind as you should try to accomplish as much as you an in the time period given. 
-  * Submissions **_will still be accepted_** after the timer has finished, so if you didn't complete it in the time alloted, take the weekend to complete the rest of the test. 
+  * Submissions **_will still be accepted_** after the timer has finished, so if you didn't complete it in the alloted time, continue to work on it unitl completion!
 
 ```terminal
 npm run start-exam [EXAM-TOKEN]
