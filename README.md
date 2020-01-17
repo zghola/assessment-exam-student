@@ -18,65 +18,70 @@ Please carefully follow the instructions below to get started.
 
 ----
 
-> 1) Clone the repository
+1) Clone the repository
 
-To start, **CLONE** (do not _fork_) this repo to your local Vagrant machine, and `cd` into the folder:
+    To start, **CLONE** (do not _fork_) this repo to your local Vagrant machine, and `cd` into the folder:
 
-```terminal
-git clone git@github.com:lighthouse-labs/assessment-exam-student.git
-cd assessment-exam-student
-```
+    ```terminal
+    git clone git@github.com:lighthouse-labs/assessment-exam-student.git
+    cd assessment-exam-student
+    ```
 
-> 2) Install Required Packages
+2) Install Required Packages
 
-Run the following command from within the project directory:
+    Run the following command from within the project directory:
 
-```terminal
-npm install --no-bin-links
-```
+    ```terminal
+    npm install --no-bin-links
+    ```
 
-----
-
-> 3) Open the entire project in Visual Studio Code
-
-Open the entire project directory in VS Code. You should see the directory tree on the left hand side: 
-
-![screenshot of vscode](https://d.pr/i/qNC5oO+)
+    > You might run into an issue with installing the `sqlite` package, if you do try running this instead
+    >    ```
+    >    npm install sqlite3@4.0.9 && npm install --no-bin-links
+    >    ```
 
 ----
 
-> 4) Start the test from a terminal window
+3) Open the entire project in Visual Studio Code
 
-Enter the command below to start the test:
+    Open the entire project directory in VS Code. You should see the directory tree on the left hand side: 
 
-* **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
-* Once you start the exam, the test timer will start (typically 2-3 hours).
-  * Please keep the timer in mind as you should try to accomplish as much as you an in the time period given. 
-  * Submissions **_will still be accepted_** after the timer has finished, so if you didn't complete it in the alloted time, continue to work on it unitl completion!
+    ![screenshot of vscode](https://d.pr/i/qNC5oO+)
 
-```terminal
-npm run start-exam [EXAM-TOKEN]
-```
+----
 
-This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
+4) Start the test from a terminal window
 
-You should see output that looks like this (note: output may vary based on which test you are taking): 
+    Enter the command below to start the test:
 
-```
-> assessment-exam-student@1.0.0 start-exam /path/to/assessment-exam-student
-> node start-exam.js "exam-id-here"
+    * **NOTE:** replace `[EXAM-TOKEN]` with the token provided on the test activity page in compass.
+    * Once you start the exam, the test timer will start (typically 2-3 hours).
+      * Please keep the timer in mind as you should try to accomplish as much as you an in the time period given. 
+      * Submissions **_will still be accepted_** after the timer has finished, so if you didn't complete it in the alloted time, continue to work on it unitl completion!
 
-Contacting Server to Start Exam "exam-id-here"
+    ```terminal
+    npm run start-exam [EXAM-TOKEN]
+    ```
 
-Server Response: 5 Questions:
-  Creating Question 00  (30 Points) Answer file: answers/00.js
-  Creating Question 01  (30 Points) Answer file: answers/01.js
-  Creating Question 02  (20 Points) Answer file: answers/02.js
-  Creating Question 03  (20 Points) Answer file: answers/03.js
-  Creating Question 04  (20 Points) Answer file: answers/04.js
-```
+    This command downloads the test questions to your local file system. You should see new files in the `answers/` directory.
 
-If you see an error, please ensure you are using the correct `[EXAM-TOKEN]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
+    You should see output that looks like this (note: output may vary based on which test you are taking): 
+
+    ```
+    > assessment-exam-student@1.0.0 start-exam /path/to/assessment-exam-student
+    > node start-exam.js "exam-id-here"
+
+    Contacting Server to Start Exam "exam-id-here"
+
+    Server Response: 5 Questions:
+      Creating Question 00  (30 Points) Answer file: answers/00.js
+      Creating Question 01  (30 Points) Answer file: answers/01.js
+      Creating Question 02  (20 Points) Answer file: answers/02.js
+      Creating Question 03  (20 Points) Answer file: answers/03.js
+      Creating Question 04  (20 Points) Answer file: answers/04.js
+    ```
+
+    If you see an error, please ensure you are using the correct `[EXAM-TOKEN]` (do not include the square brackets). **You may need to re-clone and restart the process from step 1 if the problem persists!**
 
 ----
 
@@ -84,47 +89,47 @@ If you see an error, please ensure you are using the correct `[EXAM-TOKEN]` (do 
 
 Now you're ready to start answering questions! Follow these steps carefully:
 
-> 1) Expand the `answers/` directory in your code editor. 
+1) Expand the `answers/` directory in your code editor. 
 
-Note that the question numbering starts at 0.
-
-----
-
-> 2) Execute the test code
-
-From the command line, execute the automated tests for the first question, question 0, using the command below (question numbering starts at 0): 
-
-```terminal
-npm run question 0
-```
+    Note that the question numbering starts at 0.
 
 ----
 
-> 3) Read the output carefully
+2) Execute the test code
 
-Notice that none of the tests for question 0 are passing (well one of them passes by default, so you start with 2 points, no big deal!):
+    From the command line, execute the automated tests for the first question, question 0, using the command below (question numbering starts at 0): 
 
-![](https://d.pr/i/rLIC/22mUQewK+)
-
-----
-
-> 4) Write some code
-
-Implement the code for the first function (`count`) in the question, located in `answers/00.js`.
-
-Run the `npm run question 0` command again to make sure you are starting to see solutions:
-
-![](https://d.pr/i/NjfW/59rG0xpf+)
-
-Notice that your score for the question also went up. The number of automated tests passing the primary factor for how your score is calculated. 
-
-It is recommended that you run the `npm run question [number]` command frequently. If you score close to perfect on a question (eg: all tests pass, but you have lint errors), we suggest you move on and return to polish that code later.
+    ```terminal
+    npm run question 0
+    ```
 
 ----
 
-> 5) Repeat for all questions
+3) Read the output carefully
 
-Once you complete `question 0`, repeat these steps but this time with `question 1` (the code for which should is in `answers/01.js`). 
+    Notice that none of the tests for question 0 are passing (well one of them passes by default, so you start with 2 points, no big deal!):
+
+    ![](https://d.pr/i/rLIC/22mUQewK+)
+
+----
+
+4) Write some code
+
+    Implement the code for the first function (`count`) in the question, located in `answers/00.js`.
+
+    Run the `npm run question 0` command again to make sure you are starting to see solutions:
+
+    ![](https://d.pr/i/NjfW/59rG0xpf+)
+
+    Notice that your score for the question also went up. The number of automated tests passing the primary factor for how your score is calculated. 
+
+    It is recommended that you run the `npm run question [number]` command frequently. If you score close to perfect on a question (eg: all tests pass, but you have lint errors), we suggest you move on and return to polish that code later.
+
+----
+
+5) Repeat for all questions
+
+    Once you complete `question 0`, repeat these steps but this time with `question 1` (the code for which should is in `answers/01.js`). 
 
 
 ## Submission Grading
