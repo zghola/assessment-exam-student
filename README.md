@@ -32,12 +32,12 @@ Please carefully follow the instructions below to get started.
     Run the following command from within the project directory:
 
     ```terminal
-    npm install --no-bin-links
+    npm install sqlite3@4.0.9 && npm install --no-bin-links
     ```
 
     > You might run into an issue with installing the `sqlite` package, if you do try running this instead
     >    ```
-    >    npm install sqlite3@4.0.9 && npm install --no-bin-links
+    >    npm install node-pre-gyp -g
     >    ```
 
 ----
